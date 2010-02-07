@@ -2,7 +2,7 @@
 # - stop bashism in extract_msoffice_content.sh, and make it secure with mktemp use
 # - firefox plugin not firefox 3.x compatible
 %define		buildid	0088
-%define		rel		0.4
+%define		rel		0.5
 Summary:	Google Desktop: Personalize and organize your own computer
 Name:		google-desktop
 Version:	1.2.0
@@ -10,12 +10,12 @@ Release:	%{buildid}.%{rel}
 License:	Copyright 2007 Google Inc. All Rights Reserved.
 Group:		X11/Applications
 %ifarch %{ix86}
-Source0:	http://dl.google.com/linux/rpm/stable/i386/%{name}-linux-current.rpm
+Source0:	http://dl.google.com/linux/rpm/stable/i386/%{name}-linux-%{version}.%{buildid}.i386.rpm
 # NoSource0-md5:	165d313c8592a007d7a0e42ca3af0dfb
 NoSource:	0
 %endif
 %ifarch %{x8664}
-Source1:	http://dl.google.com/linux/rpm/stable/x86_64/%{name}-linux-current.rpm
+Source1:	http://dl.google.com/linux/rpm/stable/x86_64/%{name}-linux-%{version}.%{buildid}.x86_64.rpm
 # NoSource1-md5:	dac43d2ea9d4f1069a0bed0e754cffb1
 NoSource:	1
 %endif
