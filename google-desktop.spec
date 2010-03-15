@@ -2,7 +2,7 @@
 # - stop bashism in extract_msoffice_content.sh, and make it secure with mktemp use
 # - firefox plugin not firefox 3.x compatible
 %define		buildid	0088
-%define		rel		0.5
+%define		rel		0.6
 Summary:	Google Desktop: Personalize and organize your own computer
 Name:		google-desktop
 Version:	1.2.0
@@ -82,9 +82,9 @@ rm bin/{xdg-open,xdg-desktop-menu}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_datadir}/autostart,%{_desktopdir},/etc/cron.daily,/var/cache/google/desktop}
+install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},/etc/xdg/autostart,%{_desktopdir},/etc/cron.daily,/var/cache/google/desktop}
 cp -a xdg/google-gdl-preferences.desktop $RPM_BUILD_ROOT%{_desktopdir}
-cp -a xdg/google-gdl.desktop $RPM_BUILD_ROOT%{_datadir}/autostart
+cp -a xdg/google-gdl.desktop $RPM_BUILD_ROOT/etc/xdg/autostart
 cp -a resource plugin lib bin $RPM_BUILD_ROOT%{_appdir}
 mv $RPM_BUILD_ROOT{%{_appdir}/bin,%{_bindir}}/gdlinux
 
@@ -147,7 +147,7 @@ fi
 %attr(755,root,root) %{_appdir}/lib/*.so*
 %{_appdir}/resource
 
-%{_datadir}/autostart/*.desktop
+/etc/xdg/autostart/*.desktop
 %{_desktopdir}/*.desktop
 
 %dir /var/cache/google
